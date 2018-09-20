@@ -2,7 +2,6 @@ import * as React from 'react';
 import './materialize.css';
 import './Profile.css';
 import './materialize.js';
-import Note from './Note'
 import Person from './Person';
 
 
@@ -15,7 +14,6 @@ class Profile extends React.Component<IProfileProps> {
         this.text = e.target.value;
     }
      addNewNote = (e: React.MouseEvent<HTMLButtonElement>) =>{
-        var myNote: Note = { Id: this.props.Notes.length, PersonId: this.props.Id, Text: this.text };
         this.props.newNote(this.props.Notes.length, this.props.Id, this.text);
 
     }
