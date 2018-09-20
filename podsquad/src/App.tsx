@@ -29,7 +29,7 @@ var myPerson : Person= {Name: "Mitch Hussey", Location: "New York", Image: "http
         <Card Name={myPerson.Name} Location={myPerson.Location} Image={myPerson.Image} IsFavorite = {myPerson.IsFavorite}/>
         <Modal/>
         </div>
-        <Profile/>
+        <Profile Name={myPerson.Name} Location={myPerson.Location} Image={myPerson.Image} IsFavorite = {myPerson.IsFavorite}/>
       </div>
     );
   }

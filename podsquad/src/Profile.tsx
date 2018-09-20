@@ -2,22 +2,24 @@ import * as React from 'react';
 import './Modal.css';
 import './materialize.css';
 import './materialize.js';
+import Person from './Person';
 
-class Modal extends React.Component {
+
+class Modal extends React.Component<Person> {
   public render() {
     return (
       
         <div className="container">
         <div className="row">
           <div className="col s12 m6">
-            <img className="responsive-img z-depth-4 materialboxed" src="http://3.bp.blogspot.com/-o83LIHahkTI/ThG8K1JYrcI/AAAAAAAAADI/T8a2XZ5n_J0/s1600/Kanye-west-1.1.jpg"></img>
+            <img className="responsive-img z-depth-4 materialboxed" src={this.props.Image}></img>
           </div>
           <div className="col s12 m6">
             <h3>
-              Kanye West
+            {this.props.Name}
             </h3>
             <blockquote>
-              Chicago, Illinois
+              {this.props.Location}
               <br />
               C2
               <br />
