@@ -1,12 +1,46 @@
 import * as React from 'react';
-import './Modal.css';
 import './materialize.css';
+import './Profile.css';
 import './materialize.js';
 import Person from './Person';
 
 
 class Modal extends React.Component<Person> {
-  public render() {
+  
+    public render() {
+
+        var htmlNotes = this.props.Notes.map(n => 
+            <div id="note" className="row card yellow lighten-4 input-field">
+            <div className="col s8  m9 xl10 input-field">
+                <textarea disabled id="disabledInput" className="validate materialize-textarea">{n.Text}</textarea>
+            </div>
+            <div className="col s4 m3  xl2">
+              <button className="left btn-floating btn-small waves-effect waves-light blue" type="submit" id="update"
+                name="action">
+                <i className="material-icons right">save</i>
+              </button>
+              <button className="left btn-floating btn-small waves-effect waves-light red" type="submit" id="cancelEdit"
+                name="action">
+                <i className="material-icons right">cancel</i>
+              </button>
+            </div>
+            <div className="fixed-action-btn horizontal col s2 m1" id="menu">
+              
+              <a className="btn-floating btn-medium teal lighten-1">
+                <i className="material-icons">more_horiz</i>
+              </a>
+              <ul>
+                <li><a id="delete" className="btn-floating btn-small red" ><i className="material-icons">delete_forever</i></a>
+                </li>
+                <li><a id="edit" className="btn-floating btn-small yellow darken-1"><i className="material-icons">mode_edit</i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        
+        )
+
+
     return (
       
         <div className="container">
@@ -39,33 +73,9 @@ class Modal extends React.Component<Person> {
             </button>
           </div>
         </div>
-      
-        <div id="note" className="row card yellow lighten-4 input-field">
-          <div className="col s8  m9 xl10 input-field">
-              <textarea disabled id="disabledInput" className="validate materialize-textarea">Kanye is very talented Kanye is very talented Kanye is very talented Kanye is very talented Kanye is very talented Kanye is very talented</textarea>
-          </div>
-          <div className="col s4 m3  xl2">
-            <button className="left btn-floating btn-small waves-effect waves-light blue" type="submit" id="update"
-              name="action">
-              <i className="material-icons right">save</i>
-            </button>
-            <button className="left btn-floating btn-small waves-effect waves-light red" type="submit" id="cancelEdit"
-              name="action">
-              <i className="material-icons right">cancel</i>
-            </button>
-          </div>
-          <div className="fixed-action-btn horizontal col s2 m1" id="menu">
-            
-            <a className="btn-floating btn-medium teal lighten-1">
-              <i className="material-icons">more_horiz</i>
-            </a>
-            <ul>
-              <li><a id="delete" className="btn-floating btn-small red" ><i className="material-icons">delete_forever</i></a>
-              </li>
-              <li><a id="edit" className="btn-floating btn-small yellow darken-1"><i className="material-icons">mode_edit</i></a>
-              </li>
-            </ul>
-          </div>
+        <div className="notes">
+        {this.props.Notes.length}
+        {htmlNotes}
         </div>
         </div>
 
