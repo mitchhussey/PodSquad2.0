@@ -24,7 +24,7 @@ class Profile extends React.Component<IProfileProps> {
 
 
         var htmlNotes = this.props.Notes.map(n =>
-            <div id="note" className="row card yellow lighten-4 input-field">
+            <div key={n.NoteId} id="note" className="row card yellow lighten-4 input-field">
                 {/* <div className="col s8  m9 xl10 input-field"> */}
                 <div className="col s11 input-field">
                     <textarea disabled id="disabledInput" className="validate materialize-textarea">{n.Text}</textarea>

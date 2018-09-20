@@ -1,5 +1,5 @@
 class Note {
-    Id: number;
+    NoteId: number;
     PersonId: number;
     Text: string;
 }
