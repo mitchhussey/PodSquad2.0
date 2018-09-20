@@ -4,6 +4,7 @@ import Card from './Card'
 import logo from './logo.svg';
 import Modal from './Modal';
 import Person from './Person';
+import Profile from './Profile';
 
 class App extends React.Component {
   public render() {
@@ -28,6 +29,7 @@ var myPerson : Person= {Name: "Mitch Hussey", Location: "New York", Image: "http
         <Card Name={myPerson.Name} Location={myPerson.Location} Image={myPerson.Image} IsFavorite = {myPerson.IsFavorite}/>
         <Modal/>
         </div>
+        <Profile/>
       </div>
     );
   }
