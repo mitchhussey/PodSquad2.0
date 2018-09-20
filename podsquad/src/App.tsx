@@ -46,7 +46,7 @@ class App extends React.Component<{}, IAppState> {
 
     var htmlProfile = people.map(p =>
       <div className="col s12">
-        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
+        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes}/>
       </div>
     )
     

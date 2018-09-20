@@ -16,7 +16,7 @@ class Profile extends React.Component<IProfileProps> {
     }
      addNewNote = (e: React.MouseEvent<HTMLButtonElement>) =>{
         var myNote: Note = { Id: this.props.Notes.length, PersonId: this.props.Id, Text: this.text };
-        this.props.newNote(this.props.Notes.length, this.props.Id, this.text );
+        this.props.newNote(this.props.Notes.length, this.props.Id, this.text);
 
     }
     public render() {
