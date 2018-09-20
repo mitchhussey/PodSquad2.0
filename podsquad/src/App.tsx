@@ -5,9 +5,23 @@ import ContactList from './ContactList'
 import Note from './Note'
 // import Person from './Person';
 import Profile from './Profile';
+interface IAppState {
+  showContacts: boolean;
+  showDetails: boolean;
+}
 
-class App extends React.Component {
+class App extends React.Component<{}, IAppState> {
+
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      showContacts: true,
+      showDetails: false
+    }
+  }
+
   public render() {
+
     var notes = [];
     var myNote: Note = { Id: 1, PersonId: 2, Text: "Mitch rulz" };
     notes.push(myNote);
@@ -21,21 +35,28 @@ class App extends React.Component {
 
     var htmlCards = people.map(p =>
       <div>
-      <div className="col l4 m6 hide-on-small-and-down">
-        <Card Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
+        <div className="col l4 m6 hide-on-small-and-down">
+          <Card Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
+        </div>
+        <ul className="collection hide-on-med-and-up">
+          <ContactList Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
+        </ul>
       </div>
-      <ul className="collection hide-on-med-and-up">
-        <ContactList Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
-      </ul>
-      </div>
-     
-        );
+    );
 
     var htmlProfile = people.map(p =>
       <div className="col s12">
         <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
       </div>
     )
+
+    let content;
+    if (this.state.showContacts) {
+      content = htmlCards
+    }
+    else if (this.state.showDetails) {
+      content = htmlProfile
+    }
 
     return (
       <div className="App">
@@ -44,13 +65,23 @@ class App extends React.Component {
         </header> */}
 
         <div className="row left contactCard">
-
-          {htmlCards}
-          <hr></hr>
-          {htmlProfile}
+          <div>
+            <button className="btn" onClick={this.onAClick}>A</button>
+            <button className="btn" onClick={this.onBClick}>B</button>
+          </div>
+          {content}
         </div>
       </div>
     );
+  }
+  private onAClick = () => {
+    this.setState({ showContacts: true });
+    this.setState({ showDetails: false });
+
+  }
+  private onBClick = () => {
+    this.setState({ showDetails: true });
+    this.setState({ showContacts: false });
   }
 }
 
