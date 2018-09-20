@@ -5,30 +5,37 @@ import './mitch.css';
 import Person from './Person';
 
 class Card extends React.Component<Person> {
-    public favorite=()=>{ 
+    public favorite = () => {
         let x = document.getElementById("notFavorite");
-        let y = document.getElementById("favorite"); 
-        
+        let y = document.getElementById("favorite");
+
         console.log(x);
         console.log(y);
 
         console.log("Favorite triggered");
     }
-    
-  public render() {
-    return (
-       
-        
+
+    private onBClick = () => {
+        this.setState({ showDetails: true });
+        this.setState({ showContacts: false });
+    }
+
+    public render() {
+        return (
+
+
             <div className="card hoverable sticky-action">
                 <div className="card-image waves-effect waves-block waves-light">
                     <button onClick={this.favorite} className="waves-effect waves-light btn-floating favBtn" id="notFavorite"><i
-                            className="material-icons">star_border</i></button>
+                        className="material-icons">star_border</i></button>
                     <button onClick={this.favorite} className="waves-effect waves-light btn-floating favBtn" id="favorite"><i
-                            className="material-icons">star</i></button>
+                        className="material-icons">star</i></button>
                     <img className="activator" src={this.props.Image}></img>
                 </div>
                 <div className="card-content center">
                     <span className="card-title truncate activator grey-text text-darken-4">{this.props.Name}</span>
+                    <button className="btn blue darken-4" onClick={this.onBClick}>Show Details</button>
+
                 </div>
                 <div className="card-reveal">
                     <span className="card-title grey-text text-darken-4">{this.props.Name}<i className="material-icons right">close</i></span>
@@ -41,13 +48,10 @@ class Card extends React.Component<Person> {
                         <p>Loves playing xbox</p>
                         <p>From Roosevelt Utah</p>
                     </div>
-                    
-               
-            
-        </div>
-    </div>
-    );
-  }
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Card;
