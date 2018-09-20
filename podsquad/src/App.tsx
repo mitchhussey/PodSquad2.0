@@ -5,23 +5,17 @@ import ContactList from './ContactList'
 import Note from './Note'
 // import Person from './Person';
 import Profile from './Profile';
+import Person from './Person';
 interface IAppState {
   showContacts: boolean;
   showDetails: boolean;
+  people: Array<Person>;
 }
 
 class App extends React.Component<{}, IAppState> {
 
   constructor(props: any) {
     super(props);
-    this.state = {
-      showContacts: true,
-      showDetails: false
-    }
-  }
-
-  public render() {
-
     var notes = [];
     var myNote: Note = { Id: 1, PersonId: 2, Text: "Mitch rulz" };
     notes.push(myNote);
@@ -32,8 +26,19 @@ class App extends React.Component<{}, IAppState> {
       { Id: 1, Name: "Mitch Hussey", Location: "New York", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t31.0-8/23275741_10155914503929777_7875720261949730197_o.jpg?_nc_cat=0&oh=44aca1ca4085351b3b0d5580697b8330&oe=5C1D1637", IsFavorite: true, Notes: [] },
       { Id: 2, Name: "Mark Oelkers", Location: "Dallas", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/13901400_10153363537012255_1903444876443362835_n.jpg?_nc_cat=111&oh=4613ae458dba6efc83040e4fdeb8b66f&oe=5C29A2F9", IsFavorite: true, Notes: notes },
     ];
+    this.state = {
+      showContacts: true,
+      showDetails: false,
+      people: people
+    }
+  }
+onNewNote= (noteId: number, personId: number, text: string)=>{
+    var people = this.state.people;
+    this.setState({people});
+}
+  public render() {
 
-    var htmlCards = people.map(p =>
+    var htmlCards = this.state.people.map(p =>
       <div>
         <div className="col l4 m6 hide-on-small-and-down">
           <Card Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
@@ -44,21 +49,21 @@ class App extends React.Component<{}, IAppState> {
       </div>
     );
 
-    var htmlProfile = people.map(p =>
+    var htmlProfile = this.state.people.map(p =>
       <div className="col s12">
-        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
+        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} newNote={this.onNewNote}/>
       </div>
     )
     
     let transition = ""
     let content;
     if (this.state.showContacts) {
-      content = htmlCards,
-      transition = "scale-transition"
+      content = htmlCards
+      // transition = "scale-transition"
     }
     else if (this.state.showDetails) {
-      content = htmlProfile,
-      transition = "scale-transition scale-out"
+      content = htmlProfile
+      // transition = "scale-transition scale-out"
     }
 
     return (
