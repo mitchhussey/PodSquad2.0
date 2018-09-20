@@ -23,8 +23,15 @@ class App extends React.Component<{}, IAppState> {
     notes.push(myNote);
 
     let people = [
-      { Id: 1, Name: "Mitch Hussey", Location: "New York", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t31.0-8/23275741_10155914503929777_7875720261949730197_o.jpg?_nc_cat=0&oh=44aca1ca4085351b3b0d5580697b8330&oe=5C1D1637", IsFavorite: true, Notes: [] },
+      // { Id: 1, Name: "Mitch Hussey", Location: "New York", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t31.0-8/23275741_10155914503929777_7875720261949730197_o.jpg?_nc_cat=0&oh=44aca1ca4085351b3b0d5580697b8330&oe=5C1D1637", IsFavorite: true, Notes: [] },
       { Id: 2, Name: "Mark Oelkers", Location: "Dallas", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/13901400_10153363537012255_1903444876443362835_n.jpg?_nc_cat=111&oh=4613ae458dba6efc83040e4fdeb8b66f&oe=5C29A2F9", IsFavorite: true, Notes: notes },
+      { Id: 3, Name: "Bruce Ballengee", Location: "Dallas", Image: "https://theoceanapi.azurewebsites.net/people/bruce-ballengee/image_2x?dateTime=636016716887400000", IsFavorite: true, Notes: [] },
+      { Id: 4, Name: "Kerry Stover", Location: "Unknown", Image: "https://theoceanapi.azurewebsites.net/people/kerry-stover/image_2x", IsFavorite: true, Notes: notes },
+      { Id: 5, Name: "Dbrav Dunkley", Location: "Dallas", Image: "https://theoceanapi.azurewebsites.net/people/dbrav-dunkley/image_2x?dateTime=636012715844130000", IsFavorite: true, Notes: notes },
+      { Id: 6, Name: "Brandon Buchanan", Location: "Houston", Image: "https://theoceanapi.azurewebsites.net/people/brandon-buchanan/image_2x", IsFavorite: true, Notes: notes },
+      { Id: 7, Name: "Shelby Blue", Location: "Dallas", Image: "https://theoceanapi.azurewebsites.net/people/shelby-blue/image_2x", IsFavorite: true, Notes: notes },
+      { Id: 8, Name: "Ryan Carter", Location: "Dallas", Image: "https://theoceanapi.azurewebsites.net/people/ryan-carter/image_2x", IsFavorite: true, Notes: notes },
+      { Id: 9, Name: "Mike Evans", Location: "New York", Image: "https://theoceanapi.azurewebsites.net/people/mike-evans/image_2x?dateTime=636012716484430000", IsFavorite: true, Notes: notes },
     ];
     this.state = {
       showContacts: true,
@@ -32,10 +39,10 @@ class App extends React.Component<{}, IAppState> {
       people: people
     }
   }
-onNewNote= (noteId: number, personId: number, text: string)=>{
+  onNewNote = (noteId: number, personId: number, text: string) => {
     var people = this.state.people;
-    this.setState({people});
-}
+    this.setState({ people });
+  }
   public render() {
 
     var htmlCards = this.state.people.map(p =>
@@ -51,10 +58,10 @@ onNewNote= (noteId: number, personId: number, text: string)=>{
 
     var htmlProfile = this.state.people.map(p =>
       <div className="col s12">
-        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} newNote={this.onNewNote}/>
+        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} newNote={this.onNewNote} />
       </div>
     )
-    
+
     let transition = ""
     let content;
     if (this.state.showContacts) {
