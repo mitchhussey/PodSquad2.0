@@ -74,7 +74,6 @@ class Modal extends React.Component<Person> {
           </div>
         </div>
         <div className="notes">
-        {this.props.Notes.length}
         {htmlNotes}
         </div>
         </div>
