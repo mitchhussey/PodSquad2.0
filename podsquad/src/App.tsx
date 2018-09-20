@@ -49,13 +49,16 @@ class App extends React.Component<{}, IAppState> {
         <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
       </div>
     )
-
+    
+    let transition = ""
     let content;
     if (this.state.showContacts) {
-      content = htmlCards
+      content = htmlCards,
+      transition = "scale-transition"
     }
     else if (this.state.showDetails) {
-      content = htmlProfile
+      content = htmlProfile,
+      transition = "scale-transition scale-out"
     }
 
     return (
@@ -66,10 +69,14 @@ class App extends React.Component<{}, IAppState> {
 
         <div className="row left contactCard">
           <div>
-            <button className="btn" onClick={this.onAClick}>A</button>
-            <button className="btn" onClick={this.onBClick}>B</button>
+            <button className="btn " onClick={this.onAClick}>Show Contacts</button>
+            <br></br>
+            <br></br>
+            <button className="btn" onClick={this.onBClick}>Show Profile</button>
           </div>
-          {content}
+          <div className={transition}>
+            {content}
+          </div>
         </div>
       </div>
     );
