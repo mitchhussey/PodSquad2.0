@@ -20,6 +20,8 @@ class Card extends React.Component<Person> {
         this.setState({ showContacts: false });
     }
 
+ 
+
     public render() {
         return (
 
@@ -28,8 +30,7 @@ class Card extends React.Component<Person> {
                 <div className="card-image waves-effect waves-block waves-light">
                     <button onClick={this.favorite} className="waves-effect waves-light btn-floating favBtn" id="notFavorite"><i
                         className="material-icons">star_border</i></button>
-                    <button onClick={this.favorite} className="waves-effect waves-light btn-floating favBtn" id="favorite"><i
-                        className="material-icons">star</i></button>
+                    
                     <img className="activator" src={this.props.Image}></img>
                 </div>
                 <div className="card-content center">
@@ -42,7 +43,7 @@ class Card extends React.Component<Person> {
 
                     <p>{this.props.Location}</p>
                     <hr></hr>
-                    <a href="#" className="waves-effect waves-light btn light blue darken 3">Add Note</a>
+                    {/* <a href="#" className="waves-effect waves-light btn light blue darken 3">Add Note</a> */}
                     <div className="card yellow lighten-4">
                         <p>Has a golf tournament he is playing in soon.</p>
                         <p>Loves playing xbox</p>
