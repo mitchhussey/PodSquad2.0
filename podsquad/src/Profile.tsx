@@ -11,10 +11,13 @@ class Modal extends React.Component<Person> {
 
         var htmlNotes = this.props.Notes.map(n => 
             <div id="note" className="row card yellow lighten-4 input-field">
-            <div className="col s8  m9 xl10 input-field">
+            {/* <div className="col s8  m9 xl10 input-field"> */}
+            <div className="col s11 input-field">
                 <textarea disabled id="disabledInput" className="validate materialize-textarea">{n.Text}</textarea>
             </div>
-            <div className="col s4 m3  xl2">
+
+
+            {/* <div className="col s4 m3  xl2">
               <button className="left btn-floating btn-small waves-effect waves-light blue" type="submit" id="update"
                 name="action">
                 <i className="material-icons right">save</i>
@@ -35,7 +38,7 @@ class Modal extends React.Component<Person> {
                 <li><a id="edit" className="btn-floating btn-small yellow darken-1"><i className="material-icons">mode_edit</i></a>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         
         )
