@@ -4,7 +4,11 @@ import './materialize.js';
 import './mitch.css';
 import Person from './Person';
 
-class Card extends React.Component<Person> {
+interface ICardProps extends Person{
+    sendProfile(Id: number):void
+}
+
+class Card extends React.Component<ICardProps> {
     public favorite = () => {
         let x = document.getElementById("notFavorite");
         let y = document.getElementById("favorite");
@@ -15,14 +19,15 @@ class Card extends React.Component<Person> {
         console.log("Favorite triggered");
     }
 
-    private onBClick = () => {
-        this.setState({ showDetails: true });
-        this.setState({ showContacts: false });
+    sendPerson = (e: React.MouseEvent<HTMLButtonElement>) =>{
+        this.props.sendProfile(this.props.Id);
     }
 
- 
+
 
     public render() {
+        var detailsButton = <button className="btn blue darken-4" onClick={this.sendPerson}>Show Details</button>
+
         return (
 
 
@@ -30,13 +35,12 @@ class Card extends React.Component<Person> {
                 <div className="card-image waves-effect waves-block waves-light">
                     <button onClick={this.favorite} className="waves-effect waves-light btn-floating favBtn" id="notFavorite"><i
                         className="material-icons">star_border</i></button>
-                    
+
                     <img className="activator" src={this.props.Image}></img>
                 </div>
                 <div className="card-content center">
                     <span className="card-title truncate activator grey-text text-darken-4">{this.props.Name}</span>
-                    <button className="btn blue darken-4" onClick={this.onBClick}>Show Details</button>
-
+                    {detailsButton}
                 </div>
                 <div className="card-reveal">
                     <span className="card-title grey-text text-darken-4">{this.props.Name}<i className="material-icons right">close</i></span>

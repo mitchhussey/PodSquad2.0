@@ -10,6 +10,7 @@ interface IAppState {
   showContacts: boolean;
   showDetails: boolean;
   people: Array<Person>;
+  activeProfileID: number | undefined;
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -36,16 +37,33 @@ class App extends React.Component<{}, IAppState> {
     this.state = {
       showContacts: true,
       showDetails: false,
-      people: people
+      people: people,
+      activeProfileID: undefined,
     }
   }
+
+  sendProfile = (id: number) => {
+    var people = this.state.people;
+    people.map(p => {
+      if (p.Id === id) {
+        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} newNote={this.onNewNote} />
+       
+        this.setState({ showDetails: true });
+        this.setState({ showContacts: false });
+        this.setState({activeProfileID: p.Id})
+      }
+    }
+    )
+  }
+
   onNewNote = (noteId: number, personId: number, text: string) => {
     var people = this.state.people;
     var myNote: Note = { NoteId: noteId, PersonId: personId, Text: text };
-    people.map(p=>
-      {if(p.Id === personId){
+    people.map(p => {
+      if (p.Id === personId) {
         p.Notes.push(myNote);
-      }}
+      }
+    }
     )
     this.setState({ people });
   }
@@ -54,19 +72,26 @@ class App extends React.Component<{}, IAppState> {
     var htmlCards = this.state.people.map(p =>
       <div>
         <div className="col l4 m6 hide-on-small-and-down">
-          <Card Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
+          <Card Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} sendProfile={this.sendProfile} />
         </div>
         <ul className="collection hide-on-med-and-up">
           <ContactList Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
         </ul>
       </div>
     );
+      if (this.state.activeProfileID != undefined){
+        var singlePerson = this.state.people.filter(p => p.Id === this.state.activeProfileID)[0]
+      console.log(singlePerson.Name)
+      htmlProfile = <div>
+        <Profile Id={singlePerson.Id} Name={singlePerson.Name} Location={singlePerson.Location} Image={singlePerson.Image} IsFavorite={singlePerson.IsFavorite} Notes={singlePerson.Notes} newNote={this.onNewNote} />
+        </div>
+      }
 
-    var htmlProfile = this.state.people.map(p =>
-      <div className="col s12">
-        <Profile Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} newNote={this.onNewNote} />
-      </div>
-    )
+      var htmlProfile
+      
+        
+      
+    console.log(this.state.activeProfileID)
 
     let transition = ""
     let content;
@@ -76,6 +101,7 @@ class App extends React.Component<{}, IAppState> {
     }
     else if (this.state.showDetails) {
       content = htmlProfile
+      console.log()
       // transition = "scale-transition scale-out"
     }
 
@@ -84,7 +110,11 @@ class App extends React.Component<{}, IAppState> {
         {/* <header className="App-header">
           
         </header> */}
-
+        <nav>
+          <div className="nav-wrapper valign-wrapper blue darken-4">
+            <a href="#" className="brand-logo "><img height="30px" src="https://cdn0.iconfinder.com/data/icons/animal-icons-flat/128/dolphin-512.png" alt="p.Name" ></img>     PodSquad</a>
+          </div>
+        </nav>
         <div className="row left contactCard">
           <div>
             <button className="btn " onClick={this.onAClick}>Show Contacts</button>
