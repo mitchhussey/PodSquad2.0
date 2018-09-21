@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import Card from './Card';
-import ContactList from './ContactList';
+// import ContactList from './ContactList';
 import Note from './Note';
 import './mitch.css';
 // import Person from './Person';
@@ -71,13 +71,13 @@ class App extends React.Component<{}, IAppState> {
   public render() {
 
     var htmlCards = this.state.people.map(p =>
-      <div>
-        <div className="col l4 m6 hide-on-small-and-down">
+      <div className="container">
+        <div className="col l3 m6 s12">
           <Card Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} sendProfile={this.sendProfile} />
         </div>
-        <ul className="collection hide-on-med-and-up">
+        {/* <ul className="collection hide-on-med-and-up">
           <ContactList Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} />
-        </ul>
+        </ul> */}
       </div>
     );
       if (this.state.activeProfileID != undefined){
@@ -126,12 +126,12 @@ class App extends React.Component<{}, IAppState> {
             
           </div>
         </nav>
-        <div className="row contactCard">
+        <div className="row ">
           <div>
             
             <br></br>
             <div className= "centeredButton">
-            <button className="btn blue" onClick={this.onAClick}>Home</button>
+            
             </div>
             <br></br>
           </div>
@@ -139,6 +139,8 @@ class App extends React.Component<{}, IAppState> {
             {htmlCards}
           </div>
           <div className={transition2}>
+          <button className="btn blue" onClick={this.onAClick}>Home</button>
+          <hr></hr>
             {htmlProfile}
           </div>
           {/* <div className={transition2}>
