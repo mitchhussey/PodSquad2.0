@@ -45,13 +45,10 @@ class Profile extends React.Component<IProfileProps> {
                         <h3>
                             {this.props.Name}
                         </h3>
-                        <blockquote>
+                        <h5>
                             {this.props.Location}
                             <br />
-                            C1
-              <br />
-                            BYU
-            </blockquote>
+            </h5>
                     </div>
                 </div>
                 <div className="row">
