@@ -113,14 +113,16 @@ class App extends React.Component<{}, IAppState> {
         <nav>
           <div className="nav-wrapper valign-wrapper blue darken-4">
             <a href="#" className="brand-logo "><img height="30px" src="https://cdn0.iconfinder.com/data/icons/animal-icons-flat/128/dolphin-512.png" alt="p.Name" ></img>     PodSquad</a>
+            
           </div>
         </nav>
         <div className="row left contactCard">
           <div>
-            <button className="btn " onClick={this.onAClick}>Show Contacts</button>
+            
             <br></br>
+            
+            <button className="btn blue" onClick={this.onAClick}>Home</button>
             <br></br>
-            <button className="btn" onClick={this.onBClick}>Show Profile</button>
           </div>
           <div className={transition}>
             {content}
@@ -134,10 +136,10 @@ class App extends React.Component<{}, IAppState> {
     this.setState({ showDetails: false });
 
   }
-  private onBClick = () => {
-    this.setState({ showDetails: true });
-    this.setState({ showContacts: false });
-  }
+  // private onBClick = () => {
+  //   this.setState({ showDetails: true });
+  //   this.setState({ showContacts: false });
+  // }
 }
 
 export default App;
