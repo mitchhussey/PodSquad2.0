@@ -28,6 +28,19 @@ class Card extends React.Component<ICardProps> {
     public render() {
         var detailsButton = <button className="btn blue darken-4" onClick={this.sendPerson}>Show Details</button>
 
+
+        var htmlNotes = this.props.Notes.map(n =>
+            <div className="card yellow lighten-4">
+                        <p>{n.Text}</p>
+                    </div>
+            // <div key={n.NoteId} id="note" className="row card yellow lighten-4 input-field">
+            //     {/* <div className="col s8  m9 xl10 input-field"> */}
+            //     <div className="col s11 input-field">
+            //         <textarea disabled id="disabledInput" className="validate materialize-textarea">{n.Text}</textarea>
+            //     </div>
+            // </div>
+
+        )
         return (
 
 
@@ -48,11 +61,7 @@ class Card extends React.Component<ICardProps> {
                     <p>{this.props.Location}</p>
                     <hr></hr>
                     {/* <a href="#" className="waves-effect waves-light btn light blue darken 3">Add Note</a> */}
-                    <div className="card yellow lighten-4">
-                        <p>Has a golf tournament he is playing in soon.</p>
-                        <p>Loves playing xbox</p>
-                        <p>From Roosevelt Utah</p>
-                    </div>
+                    {htmlNotes}
                 </div>
             </div>
         );
