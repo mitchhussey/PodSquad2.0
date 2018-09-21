@@ -39,7 +39,7 @@ class Profile extends React.Component<IProfileProps> {
             <div className="container">
                 <div className="row">
                     <div className="col s12 m6">
-                        <img className="responsive-img z-depth-4 materialboxed" src={this.props.Image}></img>
+                        <img className="responsive-img z-depth-4 materialboxed" height="50000" width="50000" src={this.props.Image}></img>
                     </div>
                     <div className="col s12 m6">
                         <h3>

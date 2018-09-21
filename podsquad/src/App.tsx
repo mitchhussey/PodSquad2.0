@@ -19,14 +19,15 @@ class App extends React.Component<{}, IAppState> {
   constructor(props: any) {
     super(props);
     var notes = [];
-    var myNote: Note = { NoteId: 1, PersonId: 2, Text: "Mitch rulz" };
+    var myNote: Note = { NoteId: 1, PersonId: 2, Text: "Marc is from Flower Mound TX" };
     notes.push(myNote);
-    var myNote: Note = { NoteId: 2, PersonId: 2, Text: "Marc rulz" };
+    var myNote: Note = { NoteId: 2, PersonId: 2, Text: "He and I worked together on Pod Squad" };
     notes.push(myNote);
+    
 
     let people = [
       // { Id: 1, Name: "Mitch Hussey", Location: "New York", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t31.0-8/23275741_10155914503929777_7875720261949730197_o.jpg?_nc_cat=0&oh=44aca1ca4085351b3b0d5580697b8330&oe=5C1D1637", IsFavorite: true, Notes: [] },
-      { Id: 2, Name: "Mark Oelkers", Location: "Dallas", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/13901400_10153363537012255_1903444876443362835_n.jpg?_nc_cat=111&oh=4613ae458dba6efc83040e4fdeb8b66f&oe=5C29A2F9", IsFavorite: true, Notes: notes },
+      { Id: 2, Name: "Marc Oelkers", Location: "Dallas", Image: "https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/13901400_10153363537012255_1903444876443362835_n.jpg?_nc_cat=111&oh=4613ae458dba6efc83040e4fdeb8b66f&oe=5C29A2F9", IsFavorite: true, Notes: notes },
       { Id: 3, Name: "Bruce Ballengee", Location: "Dallas", Image: "https://theoceanapi.azurewebsites.net/people/bruce-ballengee/image_2x?dateTime=636016716887400000", IsFavorite: true, Notes: [] },
       { Id: 4, Name: "Kerry Stover", Location: "Unknown", Image: "https://theoceanapi.azurewebsites.net/people/kerry-stover/image_2x", IsFavorite: true, Notes: [] },
       { Id: 5, Name: "Dbrav Dunkley", Location: "Dallas", Image: "https://theoceanapi.azurewebsites.net/people/dbrav-dunkley/image_2x?dateTime=636012715844130000", IsFavorite: true, Notes: [] },
@@ -72,7 +73,7 @@ class App extends React.Component<{}, IAppState> {
 
     var htmlCards = this.state.people.map(p =>
       <div className="container">
-        <div className="col l3 m6 s12">
+        <div className="col l4 m6 s12">
           <Card Id={p.Id} Name={p.Name} Location={p.Location} Image={p.Image} IsFavorite={p.IsFavorite} Notes={p.Notes} sendProfile={this.sendProfile} />
         </div>
         {/* <ul className="collection hide-on-med-and-up">
@@ -120,6 +121,7 @@ class App extends React.Component<{}, IAppState> {
         {/* <header className="App-header">
           
         </header> */}
+        <body>
         <nav>
           <div className="nav-wrapper valign-wrapper blue darken-4">
             <a href="#" className="brand-logo "><img height="30px" src="https://cdn0.iconfinder.com/data/icons/animal-icons-flat/128/dolphin-512.png" alt="p.Name" ></img>     PodSquad</a>
@@ -147,6 +149,7 @@ class App extends React.Component<{}, IAppState> {
             {content}
           </div> */}
         </div>
+        </body>
       </div>
     );
   }

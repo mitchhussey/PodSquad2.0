@@ -17,6 +17,7 @@ class Card extends React.Component<ICardProps> {
         console.log(y);
 
         console.log("Favorite triggered");
+        
     }
 
     sendPerson = (e: React.MouseEvent<HTMLButtonElement>) =>{
@@ -26,6 +27,7 @@ class Card extends React.Component<ICardProps> {
 
 
     public render() {
+        
         var detailsButton = <button className="btn blue darken-4" onClick={this.sendPerson}>Show Details</button>
 
 
