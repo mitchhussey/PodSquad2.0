@@ -1,8 +1,9 @@
 import * as React from 'react';
 import './App.css';
-import Card from './Card'
-import ContactList from './ContactList'
-import Note from './Note'
+import Card from './Card';
+import ContactList from './ContactList';
+import Note from './Note';
+import './mitch.css';
 // import Person from './Person';
 import Profile from './Profile';
 import Person from './Person';
@@ -94,16 +95,25 @@ class App extends React.Component<{}, IAppState> {
     console.log(this.state.activeProfileID)
 
     let transition = ""
-    let content;
+    let transition2 = ""
+    // let content;
     if (this.state.showContacts) {
-      content = htmlCards
-      // transition = "scale-transition"
+      // content = htmlCards
+      transition = "scale-transition"
+      transition2 = "scale-transition scale-out"
+     
     }
     else if (this.state.showDetails) {
-      content = htmlProfile
+      // content = htmlProfile
       console.log()
-      // transition = "scale-transition scale-out"
+      transition = "scale-transition scale-out"
+      transition2 = "scale-transition "
+      
     }
+
+    // if (this.state.showDetails) {
+    //   transition = "scale-transition"
+    // }
 
     return (
       <div className="App">
@@ -116,17 +126,24 @@ class App extends React.Component<{}, IAppState> {
             
           </div>
         </nav>
-        <div className="row left contactCard">
+        <div className="row contactCard">
           <div>
             
             <br></br>
-            
+            <div className= "centeredButton">
             <button className="btn blue" onClick={this.onAClick}>Home</button>
+            </div>
             <br></br>
           </div>
           <div className={transition}>
-            {content}
+            {htmlCards}
           </div>
+          <div className={transition2}>
+            {htmlProfile}
+          </div>
+          {/* <div className={transition2}>
+            {content}
+          </div> */}
         </div>
       </div>
     );
@@ -134,7 +151,7 @@ class App extends React.Component<{}, IAppState> {
   private onAClick = () => {
     this.setState({ showContacts: true });
     this.setState({ showDetails: false });
-
+    
   }
   // private onBClick = () => {
   //   this.setState({ showDetails: true });
